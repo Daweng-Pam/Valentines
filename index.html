@@ -77,7 +77,8 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <div class="login-container">
+    <div class="login-container" id="loggedInUser"></div>
+>
         <h2>Login</h2>
         <form id="loginForm">
             <input type="text" id="username" placeholder="Username">
@@ -86,7 +87,7 @@
         </form>
     </div>
 
-    <script>
+   <script>
     document.getElementById('loginForm').addEventListener('submit', function(event) {
         event.preventDefault();
         
@@ -105,17 +106,15 @@
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'userLoggedIn',
-                'userId': username
+                'User_lD': username // Saving the username to the User_lD data layer variable
             });
 
-            // Redirect to a logged-in page (index2.html)
             window.location.href = 'index2.html';
         } else {
             alert('Invalid username or password. Please try again.');
         }
     });
 </script>
-
     
     <div id="falling-hearts"></div>
     <div class="main">
