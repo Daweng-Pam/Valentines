@@ -1,12 +1,13 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Valentine's Day!</title>
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href="./style.css" rel="stylesheet" type="text/css">
 
-    
     <!-- Google Tag Manager -->
     <script>
         (function(w,d,s,l,i){
@@ -31,6 +32,8 @@
         gtag('config', 'G-K7F7MTR5WD');
     </script>
     <!-- End Google Analytics -->
+
+    <link href="./style.css" rel="stylesheet" type="text/css">
     <style>
         .login-container {
             max-width: 300px;
@@ -77,44 +80,16 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <div class="login-container"></div>
-    <div id="loggedInUser"><h2>Login</h2></div>
+    <div class="login-container">
+        <h2>Login</h2>
         <form id="loginForm">
             <input type="text" id="username" placeholder="Username">
             <input type="password" id="password" placeholder="Password">
             <button type="submit">Login</button>
         </form>
     </div>
+    <div id="loggedInUser"></div>
 
-   <script>
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        var username = document.getElementById('username').value;
-        var password = document.getElementById('password').value;
-
-        // Check if username and password are valid
-        if (username === 'user' && password === 'password') {
-            // Hide the login form
-            document.getElementById('loginForm').style.display = 'none';
-
-            // Display the username at the top of the page
-            document.getElementById('loggedInUser').innerText = 'Welcome, ' + username + '!';
-
-            // Push user ID data to Google Tag Manager
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                'event': 'userLoggedIn',
-                'User_lD': username // Saving the username to the User_lD data layer variable
-            });
-
-            window.location.href = 'index2.html';
-        } else {
-            alert('Invalid username or password. Please try again.');
-        }
-    });
-</script>
-    
     <div id="falling-hearts"></div>
     <div class="main">
         <h1>Happy Valentine's Day!</br>
@@ -149,5 +124,36 @@
             </script>
         </div>
     </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Check if username and password are valid
+            if (username === 'user' && password === 'password') {
+                // Hide the login form
+                document.getElementById('loginForm').style.display = 'none';
+
+                // Display the username at the top of the page
+                document.getElementById('loggedInUser').innerText = 'Welcome, ' + username + '!';
+
+                // Push user ID data to Google Tag Manager
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    'event': 'userLoggedIn',
+                    'User_lD': username // Saving the username to the User_lD data layer variable
+                });
+
+                // Redirect to a logged-in page (index2.html)
+                window.location.href = 'index2.html';
+            } else {
+                alert('Invalid username or password. Please try again.');
+            }
+        });
+    </script>
 </body>
+
 </html>
