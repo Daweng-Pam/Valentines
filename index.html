@@ -87,21 +87,35 @@
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
 
-            // Check if username and password are valid
-            if (username === 'user' && password === 'password') {
-                // Redirect to a logged-in page (index2.html)
-                window.location.href = 'index2.html';
-            } else {
-                alert('Invalid username or password. Please try again.');
-            }
-        });
-    </script>
+        // Check if username and password are valid
+        if (username === 'user' && password === 'password') {
+            // Hide the login form
+            document.getElementById('loginForm').style.display = 'none';
+
+            // Display the username at the top of the page
+            document.getElementById('loggedInUser').innerText = 'Welcome, ' + username + '!';
+
+            // Push user ID data to Google Tag Manager
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'userLoggedIn',
+                'userId': username
+            });
+
+            // Redirect to a logged-in page (index2.html)
+            window.location.href = 'index2.html';
+        } else {
+            alert('Invalid username or password. Please try again.');
+        }
+    });
+</script>
+
     
     <div id="falling-hearts"></div>
     <div class="main">
